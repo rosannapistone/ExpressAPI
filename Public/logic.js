@@ -1,15 +1,20 @@
-window.onload = ('load', main)
+ window.onload = ('load', main)
 
 function main() {
     getLandscapes();
-}
+} 
+
+/* document.getElementById('button').addEventListener('click', (event) => {
+    let landscapes = getLandscapes()
+    //console.log(landscapes)
+}) */
 
 async function getLandscapes() {
   try {
     const response = await fetch("api/landscapes");
     const result = await response.json();
+    console.log(result)
     showLandscapes(result);
-    console.log(response, result)
 } catch (err) {
     console.log(err);
     }
@@ -19,11 +24,24 @@ async function getLandscapes() {
 
 function showLandscapes(landscapes) {
     const landscapeContainer = document.getElementById('container');
-for (let landscape of landscapes) {
-    const landscapeContent = document.createElement('div');
-    landscapeContent.innerText = landscape.name
-    landscapeContainer.appendChild(landscapeContent);
+for (let landscape of landscapes.landscapes) {
     console.log(landscape.id)
-    
+    const landscapeContent = document.createElement('div');
+    landscapeContent.setAttribute("id", "landscape-content");
+    //landscapeContent.innerText = landscape.name + landscape.flower
+    landscapeContainer.appendChild(landscapeContent);
+    const name = document.createElement('p');
+    name.innerText = landscape.name;
+    name.style.width= '40%'
+    landscapeContent.appendChild(name);
+    const flower = document.createElement('p');
+    flower.innerText = landscape.flower;
+    flower.style.width= '30%'
+    landscapeContent.appendChild(flower);
+    const animal = document.createElement('p');
+    animal.innerText = landscape.animal;
+    animal.style.width= '30%'
+    landscapeContent.appendChild(animal);
+
 }
 };

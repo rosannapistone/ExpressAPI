@@ -34,7 +34,10 @@ app.get('/api/landscapes', (req, res) => {
 });
 
 app.post('/api/landscapes', (req, res) => {
-    landscapes.push(req.body);
+    const landscape = req.body;
+    console.log(landscape);
+    landscapes.push(landscape);
+    //landscapes.push(req.body);
     res.status(201); //Kolla om den kan andras
     res.send({
         type: "post",
@@ -42,6 +45,7 @@ app.post('/api/landscapes', (req, res) => {
         flower: req.body.flower,
         animal: req.body.animal
     });
+    
 
     app.put('/api/landscapes/:id', (req, res) => {
         res.send('Landskap uppdaterat')
