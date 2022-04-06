@@ -1,0 +1,14 @@
+GET http://localhost:3000/landscapes
+
+###
+
+POST http://localhost:3000/landscapes
+Content-Type: application/json
+
+###
+
+PUT http://localhost:3000/landscapes/id
+
+###
+
+DELETE http://localhost:3000/landscapes/id

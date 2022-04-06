@@ -1,0 +1,24 @@
+/* Reusable classes */
+.flex {display: flex;}
+.column {flex-direction: column;}
+
+.form { 
+    margin-left: 1rem;
+    width: 30%;
+}
+
+.field {
+    margin-top: .5rem;
+}
+
+.landscape-container {
+    margin-right: 1rem;
+    margin-left: 4rem;
+    width: 60%;
+    height: 50%;
+    background: red;
+}
+
+.landscape-content {
+
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="/logic.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="flex">
+        <div class="form">
+        <button id="button">Visa landskap</button>
+        <h1 id="heading">Lägg till landskap</h1>
+        <form class="flex column" action="http://localhost:3000/landscape" method="POST">
+            <div class="field flex column">
+                <label for="Name">Namn</label>
+                <input id="name" name="name">
+            </div>
+            <div class="field flex column">
+                <label for="flower">Landskapsblomma</label>
+                <input name="flower">
+            </div>
+            <div class="field flex column">
+                <label for="animal">Landskapsdjur</label>
+                <input name="animal">
+            </div>
+            <button type="submit">Lägg till</button>
+        </form>
+    </div>
+    <div id="container" class="landscape-container flex">
+        <div class="landscape-content">content</div>
+    </div>
+    </div>
+</body>
+</html>

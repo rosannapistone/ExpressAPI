@@ -1,0 +1,22 @@
+{
+    "landscapes": [
+        {
+            "name": "Västra Götaland",
+            "flower": "Ljung",
+            "animal": "Trana",
+            "id": 1
+        },
+        {
+            "name": "Närke",
+            "flower": "Gullviva",
+            "animal": "Hasselmus",
+            "id": 2
+        },
+        {
+            "name": "Hälsingland",
+            "flower": "Lin",
+            "animal": "Lodjur",
+            "id": 3
+        }
+    ]
+}
