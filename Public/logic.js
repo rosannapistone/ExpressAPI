@@ -18,7 +18,13 @@ async function getLandscapes() {
   } catch (err) {
     console.log(err);
   }
-}
+} 
+
+/* const getLandscapes = () => {
+  const xhttp = new XMLHttpRequest();
+  xhttp.open('GET', 'http://localhost:3000/landscapes', false);
+  xhttp.send();
+} */
 
 function showLandscapes(landscapes) {
   const landscapeContainer = document.getElementById("container");

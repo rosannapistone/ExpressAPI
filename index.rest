@@ -5,9 +5,16 @@ GET http://localhost:3000/landscapes
 POST http://localhost:3000/landscapes
 Content-Type: application/json
 
+{
+    "name": "Bohuslän",
+    "flower": "Vildkaprifol",
+    "animal": "Knubbsäl",
+    "id": 4
+}
+
 ###
 
-PUT http://localhost:3000/landscapes/id
+PUT http://localhost:3000/landscapes/:id
 
 ###
 

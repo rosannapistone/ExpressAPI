@@ -2,28 +2,39 @@ const express = require('express');
 const app = express();
 const port = 3000;
 let data = require('./data.json');
+
+//Nytt
+const bodyParser = require('body-parser');
 //vet ej om .json behover sta med
 //const object = JSON.parse(data);
 //console.log(data)
-const landscapes = [];
+
+//Nytt
+const fs = require('fs');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+const routes = require('./routes/routes')(app, fs);
+
 
 //object['landscapes'].push({})
 //console.log(object)
 
+/* const landscapes = [];
+
 app.use('/', express.static('public'));
-app.use(express.json());
+app.use(express.json()); */
 
 //Gets data from file and shows it in the UI
-app.get('/api/landscapes', (req, res) => {
+/* app.get('/api/landscapes', (req, res) => {
     res.send(data);
     console.log("rad 18", data)
-}); 
+});  */
 
-app.post('/api/landscapes', (req, res) => {
+/* app.post('/api/landscapes', (req, res) => {
     const landscape = req.body;
-    landscapes.push(landscape);
+    landscapes.push(landscape); */
     //landscapes.push(req.body);
-    res.status(201); //Kolla om den kan andras
+    //res.status(201); //Kolla om den kan andras
     /*    res.send({
         type: "post",
         name: req.body.name,
@@ -31,8 +42,8 @@ app.post('/api/landscapes', (req, res) => {
         animal: req.body.animal
     }); */
     
-    
-    app.put('/api/landscapes/:id', (req, res) => {
+    /* 
+    app.put('/landscapes/:id', (req, res) => {
         res.send('Landskap uppdaterat')
     });
     
@@ -40,5 +51,5 @@ app.post('/api/landscapes', (req, res) => {
         res.send('Landskap borttaget')
     })
 })
-
+ */
 app.listen(port, () => console.log(`app is running on port: ${port}`));
