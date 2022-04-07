@@ -1,4 +1,4 @@
-const express = require('express');
+/* const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
@@ -23,4 +23,4 @@ app.post('/landscape', (req, res) => {
 
 
 
-app.listen(port, () => console.log(`appen lyssnar port:${port}`))
+app.listen(port, () => console.log(`appen lyssnar port:${port}`)) */

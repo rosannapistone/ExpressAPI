@@ -11,6 +11,12 @@
     margin-top: .5rem;
 }
 
+input {
+    border: solid black 1.5px;
+    border-radius: .2rem;
+    width: 100%;
+}
+
 .submit-btn {
     background-color: black;
     color: white;
@@ -34,6 +40,10 @@
     margin-bottom: .5rem;
 }
 
+.icons {
+    justify-content: space-evenly;
+}
+
 #landscape-content {
     /* border: solid black 2px; */
     border-radius: .5rem;
@@ -43,7 +53,7 @@
     display: flex;
     flex-wrap: wrap;
     /* flex-direction: column; */
-    justify-content: space-between;
+    justify-content: center; 
     align-items: center;
     background-color: rgba(218, 245, 209, 0.658);
 
@@ -54,11 +64,18 @@ body {
     margin: 0;
 }
 
+p {
+    font-size: .8rem;
+}
+
 /* Mediaqueries */
 @media (max-width: 600px) {
     .main-container {
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
+    }
+    #heading {
+        text-align: center;
     }
 }
