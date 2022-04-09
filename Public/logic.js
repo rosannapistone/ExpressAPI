@@ -15,10 +15,22 @@ async function getLandscapes() {
     const result = await response.json();
     console.log(result);
     showLandscapes(result);
+    //postLandscape(result)
   } catch (err) {
     console.log(err);
   }
 } 
+
+async function postNewData (data) {
+  const response = await fetch("/api/landscapes", {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  });
+
+}
 
 /* 
 method: "POST",
@@ -37,7 +49,7 @@ function showLandscapes(landscapes) {
     
     const name = document.createElement("p");
     name.innerText = landscape.name;
-    name.style.width = "30%";
+    name.style.width = "40%";
     landscapeContent.appendChild(name);
 
     const flower = document.createElement("p");
@@ -50,9 +62,54 @@ function showLandscapes(landscapes) {
     animal.style.width = "30%";
     landscapeContent.appendChild(animal);
 
-    const deleteIcon = document.createElement("button");
+    const editDiv = document.createElement('div')
+    editDiv.setAttribute("id", "edit-div")
+    landscapeContainer.appendChild(editDiv)
+
+    const deleteIcon = document.createElement("a");
     deleteIcon.setAttribute("id", "delete-icon")
-    deleteIcon.style.width = "2%"
-    landscapeContent.appendChild(deleteIcon);
+    //deleteIcon.style.width = "2%"
+    deleteIcon.innerHTML='Ta bort'
+    editDiv.appendChild(deleteIcon);
+    
+    const editIcon = document.createElement("a");
+    editIcon.setAttribute("id", "edit-icon")
+    //editIcon.style.width = "2%"
+    editIcon.innerHTML='Ändra'
+    editDiv.appendChild(editIcon);
   }
+}
+
+/* const form = document.getElementById('form');
+console.log(form) */
+
+document.getElementById('submit-btn').addEventListener('click', (event) => {
+  event.preventDefault();
+  /* let postNewLandscape =  */
+  postLandscape()
+  //console.log(postNewLandscape)
+}) 
+
+
+
+function postLandscape() {
+const input = document.querySelectorAll('input')
+const inputName = input[0]
+const inputFlower = input[1]
+const inputAnimal = input[2]
+
+//landscapes.name = input[0].value
+
+const name = inputName.value 
+const flower = inputFlower.value
+const animal = inputAnimal.value
+
+const data = {name, flower, animal};
+
+console.log(data)
+
+postNewData(data)
+/* form.children[1] */
+//console.log(lname, flower, animal)
+//console.log(data)
 }

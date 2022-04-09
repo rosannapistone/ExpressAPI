@@ -13,13 +13,13 @@
 </head>
 <body>
     <div class="flex main-container">
-        <div class="form">
+        <div id="form" class="form">
         <!-- <button id="button">Visa landskap</button> -->
         <h1 id="heading" class="flex">Lägg till landskap</h1>
-        <form class="flex column" action="http://localhost:3000/api/landscapes" method="POST">
+        <form class="flex column" > <!-- action="http://localhost:3000/api/landscapes" method="POST" -->
             <div class="field flex column">
                 <label for="Name">Namn</label>
-                <input id="name" name="name">
+                <input name="name"> <!-- id="name" --> 
             </div>
             <div class="field flex column">
                 <label for="flower">Landskapsblomma</label>
@@ -29,7 +29,8 @@
                 <label for="animal">Landskapsdjur</label>
                 <input name="animal">
             </div>
-            <button class="submit-btn flex" type="submit">Lägg till</button>
+            <button id="submit-btn" class="submit-btn flex" type="submit">Lägg till</button>
+            <button id="search-btn" class="submit-btn flex" type="submit">Sök</button>
         </form>
     </div>
     <div id="container" class="landscape-container flex column">

@@ -28,5 +28,11 @@
     "flower": "Gullviva",
     "animal": "Hasselmus",
     "id": 0.8947119995975703
+  },
+  {
+    "name": "Hamster",
+    "flower": "Katt",
+    "animal": "Ko",
+    "id": 0.5062915317663783
   }
 ]
