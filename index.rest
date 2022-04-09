@@ -1,21 +1,38 @@
-GET http://localhost:3000/landscapes
+GET http://localhost:3000/api/landscapes
 
 ###
 
-POST http://localhost:3000/landscapes
+POST http://localhost:3000/api/landscapes
 Content-Type: application/json
 
 {
-    "name": "Bohuslän",
-    "flower": "Vildkaprifol",
-    "animal": "Knubbsäl",
-    "id": 4
+    "name": "Hund",
+    "flower": "Gullviva",
+    "animal": "Hasselmus"
+    
+    
 }
 
 ###
 
-PUT http://localhost:3000/landscapes/:id
+PUT http://localhost:3000/api/landscapes/4
+Content-Type: application/json
+
+{
+    "name": "Handske",
+    "flower": "Gullviva",
+    "animal": "Hasselmus",
+    "id": 4 
+}
 
 ###
 
-DELETE http://localhost:3000/landscapes/id
+DELETE http://localhost:3000/api/landscapes/4
+Content-Type: application/json
+
+{
+    "name": "Handske",
+    "flower": "Gullviva",
+    "animal": "Hasselmus",
+    "id": 4 
+}

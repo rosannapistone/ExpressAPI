@@ -1,55 +1,88 @@
-const express = require('express');
+import express from "express";
+import fs, { readFile, readFileSync, writeFile } from "fs";
+
 const app = express();
 const port = 3000;
-let data = require('./data.json');
 
-//Nytt
-const bodyParser = require('body-parser');
-//vet ej om .json behover sta med
-//const object = JSON.parse(data);
-//console.log(data)
+//Functions
+function renderLandscapes() {
+  let data = fs.readFileSync("./data.json");
+  let object = JSON.parse(data);
+  console.log("object", object);
+  return object;
+}
 
-//Nytt
-const fs = require('fs');
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
-const routes = require('./routes/routes')(app, fs);
+const generateId = () => {
+  let numb = 1;
+  let getRandomID = Math.random() * numb;
+  let takenIds = [1];
+  while (takenIds.includes(getRandomID)) {
+    takenIds.push(getRandomID);
+  }
+  return getRandomID;
+};
 
+function saveLandscapes(landscapeList) {
+  fs.writeFile("./data.json", JSON.stringify(landscapeList, null, 2), (err) => {
+    if (err) {
+      console.error(err);
+    }
+  });
+}
 
-//object['landscapes'].push({})
-//console.log(object)
+function isLandscapeAdded() {
+  let addedLandscapes = renderLandscapes();
+  let addedLandscape = addedLandscapes.find((item) => {
+    return item.id;
+  });
+  if (addedLandscape) {
+    return addedLandscape;
+  } else return false;
+}
 
-/* const landscapes = [];
+app.use("/", express.static("public"));
+app.use(express.json());
 
-app.use('/', express.static('public'));
-app.use(express.json()); */
+app.get("/api/landscapes", (req, res) => {
+  res.send(renderLandscapes());
+});
 
-//Gets data from file and shows it in the UI
-/* app.get('/api/landscapes', (req, res) => {
-    res.send(data);
-    console.log("rad 18", data)
-});  */
+app.post("/api/landscapes", (req, res) => {
+  let landscapeList = renderLandscapes();
+  console.log("landscapeList", landscapeList);
+  const newLandscape = req.body;
+  const newLandscapeId = { ...newLandscape, id: generateId() };
+  landscapeList.push(newLandscapeId);
+  saveLandscapes(landscapeList);
+  res.send("uppdated");
+});
 
-/* app.post('/api/landscapes', (req, res) => {
-    const landscape = req.body;
-    landscapes.push(landscape); */
-    //landscapes.push(req.body);
-    //res.status(201); //Kolla om den kan andras
-    /*    res.send({
-        type: "post",
-        name: req.body.name,
-        flower: req.body.flower,
-        animal: req.body.animal
-    }); */
-    
-    /* 
-    app.put('/landscapes/:id', (req, res) => {
-        res.send('Landskap uppdaterat')
-    });
-    
-    app.delete('/landscapes/:id', (req, res) => {
-        res.send('Landskap borttaget')
-    })
-})
- */
+app.put("/api/landscapes/:id", (req, res) => {
+  const { id } = req.params;
+  if (!isLandscapeAdded(id)) {
+    res.send("Landskapet finns ej");
+    return;
+  }
+  let updatedLandscapeList = renderLandscapes().map((item) => {
+    if (item.id == id) {
+      return req.body;
+    }
+    return item;
+  });
+  saveLandscapes(updatedLandscapeList);
+  res.status(200).send(`landscapes id: updated`);
+});
+
+app.delete("/api/landscapes/:id", (req, res) => {
+  const { id } = req.params;
+  if (!isLandscapeAdded(id)) {
+    res.send("Landskapet finns ej");
+  }
+  let landscapeList = renderLandscapes();
+  let removeLandscape = landscapeList.find((item) => item.id == id);
+  let updatedLandscapeList = landscapeList.filter((item) => item.id != id);
+  saveLandscapes(updatedLandscapeList);
+  res.send("landskap borttaget");
+});
+
 app.listen(port, () => console.log(`app is running on port: ${port}`));
