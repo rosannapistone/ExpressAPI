@@ -75,17 +75,28 @@ input {
 
 #edit-div {
     display: flex;
-    flex-direction: column;
 }
 
- #delete-icon {
+ #delete-button {
     font-size: .4rem;
-    color: red;   
+    color: red;  
+    border: none; 
+    margin-bottom: .5rem;
+    margin-right: .1rem;
+    border-radius: .3rem;
+    background-color: white;
+    border: solid black 1px;
 } 
 
-#edit-icon {
+#edit-button {
     font-size: .4rem;
     color: orange;
+    border: none;
+    margin-bottom: .5rem;
+    margin-left: .1rem;
+    border-radius: .3rem;
+    background-color: white;
+    border: solid black 1px;
 } 
 
 body {

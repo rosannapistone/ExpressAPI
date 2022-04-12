@@ -4,11 +4,10 @@ import fs, { readFile, readFileSync, writeFile } from "fs";
 const app = express();
 const port = 3000;
 
-//Functions
+//Functions TA BORT SYNC, DALIGT VIF HAMTNING, HEL FIL MASTE LASAS IN
 function renderLandscapes() {
   let data = fs.readFileSync("./data.json");
   let object = JSON.parse(data);
-  console.log("object", object);
   return object;
 }
 
@@ -46,6 +45,33 @@ app.use(express.json());
 app.get("/api/landscapes", (req, res) => {
   res.send(renderLandscapes());
 });
+
+//get specific landscape
+app.get("/api/landscapes/:id", (req, res) => {
+
+  let landscapeList = renderLandscapes()
+    const foundLandscape = landscapeList.find((landscape) => {
+      console.log('list', landscapeList)
+        if (landscape.id === +req.params.id) {
+          console.log('id:', landscape.id, req.params.id)
+            return true
+        }  else {
+            return false
+        } 
+    })
+    res.send(foundLandscape)
+
+/*   const id = req.params.id;
+
+let lookForLandscape = renderLandscapes().find((landscape) => landscape.id === id)
+console.log('hejhej:',lookForLandscape)
+  if (!isLandscapeAdded(id)) {
+    res.send("Landskapet finns ej");
+  }
+  
+  res.status(200).send(isLandscapeAdded(id)); */
+});
+
 
 app.post("/api/landscapes", (req, res) => {
   let landscapeList = renderLandscapes();
