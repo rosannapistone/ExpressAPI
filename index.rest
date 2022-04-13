@@ -12,19 +12,19 @@ Content-Type: application/json
 {
     "name": "Hund",
     "flower": "Gullviva",
-    "animal": "Hasselmus" 
+    "animal": "Hasselmus",
 }
 
 ###
 
-PUT http://localhost:3000/api/landscapes/4
+PUT http://localhost:3000/api/landscapes/0.34060266470033906
 Content-Type: application/json
 
 {
-    "name": "Handske",
-    "flower": "Gullviva",
-    "animal": "Hasselmus",
-    "id": 4 
+    "name": "hello",
+    "flower": "tja",
+    "animal": "tjo",
+    "id":
 }
 
 ###

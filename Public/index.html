@@ -14,12 +14,13 @@
 <body>
     <div class="flex main-container">
         <div id="form" class="form">
-        <!-- <button id="button">Visa landskap</button> -->
+        
         <h1 id="heading" class="flex">Lägg till landskap</h1>
-        <form class="flex column" > <!-- action="http://localhost:3000/api/landscapes" method="POST" -->
+        <form class="flex">
+        <div class="form-container flex column" > 
             <div class="field flex column">
                 <label for="Name">Namn</label>
-                <input name="name"> <!-- id="name" --> 
+                <input name="name"> 
             </div>
             <div class="field flex column">
                 <label for="flower">Landskapsblomma</label>
@@ -30,12 +31,43 @@
                 <input name="animal">
             </div>
             <button id="submit-btn" class="submit-btn flex" type="submit">Lägg till</button>
+        </div>
+
+        <div class="form-container flex column" > 
+            <div class="field flex column">
+                <label for="Name">Namn</label>
+                <input name="name"> 
+            </div>
+            <div class="field flex column">
+                <label for="flower">Landskapsblomma</label>
+                <input name="flower">
+            </div>
+            <div class="field flex column">
+                <label for="animal">Landskapsdjur</label>
+                <input name="animal">
+            </div>
             <button id="search-btn" class="submit-btn flex" type="submit">Sök</button>
+            <div id="search-result"></div>
+        </div>
+
+        <div class="form-container flex column" > 
+            <div class="field flex column">
+                <label for="Name">Namn</label>
+                <input name="name"> 
+            </div>
+            <div class="field flex column">
+                <label for="flower">Landskapsblomma</label>
+                <input name="flower">
+            </div>
+            <div class="field flex column">
+                <label for="animal">Landskapsdjur</label>
+                <input name="animal">
+            </div>
             <button id="edit-btn" class="submit-btn flex" type="submit">Ändra</button>
-        </form>
+        </div>
+    </form>
     </div>
     <div id="container" class="landscape-container flex column">
-        <!-- <div class="landscape-content"></div> -->
         <button id="get-btn" class="get-btn flex">Hämta landskap</button>
         <div class="flex icons"> 
             <span class="material-icons">

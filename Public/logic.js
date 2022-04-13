@@ -1,6 +1,8 @@
-//Had to make this div global due to that I had to 
+//Had to make this div global due to that I had to
 //empty it everytime the getLandscapes() is called
 const landscapeHolder = document.createElement("div");
+
+getSpecificLandscape()
 
 document.getElementById("get-btn").addEventListener("click", (event) => {
   let landscapes = getLandscapes();
@@ -19,12 +21,12 @@ async function getLandscapes() {
   }
 }
 
-async function getSpecificLandscape () {
+async function getSpecificLandscape() {
   try {
     const response = await fetch("/api/landscapes");
     const result = await response.json();
     console.log(result);
-    showLandscapes(result);
+    getSpecLandscape(result);
   } catch (err) {
     console.log(err);
   }
@@ -43,17 +45,17 @@ async function postNewData(data) {
   }, 1500);
 }
 
-async function editData(id) {
- const response = await fetch(`/api/landscapes/${id}`, {
+async function editData(data, id) {
+  const response = await fetch(`/api/landscapes/${id}`, {
     method: "PUT",
-  /*   body: JSON.stringify(id),
+    body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json",
-    }, */
+    },
   });
   setTimeout(function () {
     getLandscapes();
-  }, 1500); 
+  }, 1500);
 }
 
 async function deleteData(id) {
@@ -65,13 +67,8 @@ async function deleteData(id) {
   }, 1500);
 }
 
-/* 
-method: "POST",
-body: JSON.Stringify({}),
-headers: {
-  "Content-Type": "application/json"
-} */
-
+//Creates HTML-element for each landscape from the database
+//to display them in the UI
 function showLandscapes(landscapes) {
   const landscapeContainer = document.getElementById("container");
   landscapeContainer.appendChild(landscapeHolder);
@@ -118,11 +115,50 @@ function showLandscapes(landscapes) {
   }
 }
 
+
+function getSpecLandscape (landscapes) {
+  const searchResult = document.getElementById('search-result')
+
+  const input = document.querySelectorAll("input");
+  const inputName = input[3];
+  const inputFlower = input[4];
+  const inputAnimal = input[5];
+
+  document.getElementById("search-btn").addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const name = inputName.value;
+    const flower = inputFlower.value;
+    const animal = inputAnimal.value;
+
+    landscapes.map(landscape => {
+      if (landscape.name === name || landscape.flower === flower || landscape.animal === animal){
+        const namn = document.createElement('p')
+        searchResult.appendChild(namn)
+        namn.innerHTML = landscape.name
+        const blomma = document.createElement('p')
+        searchResult.appendChild(blomma)
+        blomma.innerHTML = landscape.flower
+        const djur = document.createElement('p')
+        searchResult.appendChild(djur)
+        djur.innerHTML = landscape.animal
+      } else if (landscape.name !== name || landscape.flower !== flower || landscape.animal !== animal){
+        const error = document.createElement('p')
+        searchResult.appendChild(error)
+        error.innerHTML = 'Landskapet finns ej. Varsågod att lägga till det.'
+        console.log('finns ej')
+      }
+    })
+  });
+}
+
+//button call the following function
 document.getElementById("submit-btn").addEventListener("click", (event) => {
   event.preventDefault();
   postLandscape();
 });
 
+//handles the user input and sends it to the POST function
 function postLandscape() {
   const input = document.querySelectorAll("input");
   const inputName = input[0];
@@ -138,48 +174,36 @@ function postLandscape() {
   postNewData(data);
 }
 
-function editLandscape(landscape, landscapes){
+//triggers from button 'click' in the UI, 
+//all the changes are sent to the PUT function
+function editLandscape(landscape, landscapes) {
   const input = document.querySelectorAll("input");
-  const inputName = input[0];
-  const inputFlower = input[1];
-  const inputAnimal = input[2];
-  
-  inputName.placeholder = landscape.name
-  inputFlower.placeholder = landscape.flower
-  inputAnimal.placeholder = landscape.animal
+  const inputName = input[6];
+  const inputFlower = input[7];
+  const inputAnimal = input[8];
 
-  let editedName = "";
-  const editedFlower = input[1];
-  const editedAnimal = input[2];
+  inputName.placeholder = landscape.name;
+  inputFlower.placeholder = landscape.flower;
+  inputAnimal.placeholder = landscape.animal;
 
-  editName = input[0]
-  
-  const name = editedName.value;
-  const flower = editedFlower.value;
-  const animal = editedAnimal.value;
-  console.log(editedName.value)
-  
-  const data = { name, flower, animal };
-  console.log(data)
+  document.getElementById("edit-btn").addEventListener("click", (event) => {
+    event.preventDefault();
 
-  document.getElementById('edit-btn').addEventListener("click", (event) => {
-    event.preventDefault()
-    editData(data)
-    console.log('click')
-    console.log(data)
-  })
-  console.log(data)
+    const name = inputName.value;
+    const flower = inputFlower.value;
+    const animal = inputAnimal.value;
+    const id = landscape.id;
 
- /*  editSubmitBtn.addEventListener('click', (event) => {
-    event.preventDefault()
-    //editData(data)
-    console.log('clickclick')
-  })
-  console.log(landscape, landscapes)*/
-} 
+    const data = { name, flower, animal, id };
 
+    editData(data, landscape.id);
+  });
+}
+
+//deletes the targeted landscape on button 'click' from the UI,
+//the item id is sent to the DELETE function
 function deleteLandscape(landscape, landscapes) {
   landscapes.splice(landscape, 1);
   deleteData(landscape.id);
-  console.log(landscape.id)
+  console.log(landscape.id);
 }

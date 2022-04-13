@@ -1,20 +1,14 @@
 [
   {
-    "name": "Hund",
-    "flower": "Gullviva",
-    "animal": "Hasselmus",
-    "id": 0.27283246846660547
-  },
-  {
-    "name": "Hund",
-    "flower": "Gullviva",
-    "animal": "Hasselmus",
-    "id": 0.8258794989828613
-  },
-  {
-    "name": "Katt",
-    "flower": "Katt",
-    "animal": "Katt",
+    "name": "hej",
+    "flower": "hej",
+    "animal": "hej",
     "id": 0.20917977975829682
+  },
+  {
+    "name": "Hund",
+    "flower": "Gullviva",
+    "animal": "Hasselmus",
+    "id": 0.19870441569004105
   }
 ]

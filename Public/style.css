@@ -3,9 +3,16 @@
 .column {flex-direction: column;}
 
 .form { 
-    margin-left: 1rem;
+    margin: 1rem;
     width: 30%;
+    flex-wrap: wrap;
 }
+
+.form-container {
+    margin: 1rem;
+    flex-wrap: wrap;
+}
+
 
 .field {
     margin-top: .5rem;
@@ -17,22 +24,28 @@ input {
     width: 100%;
 }
 
+label {
+    font-size: .7rem;
+    margin-bottom: .2rem;
+}
+
 .submit-btn {
     background-color: black;
+    font-size: .7rem;
     color: white;
-    width: 4rem;
+    width: 3.5rem;
     margin-top: 1rem;
-    padding: .4rem;
+    padding: .3rem;
     justify-content: center;
    border-radius: .5rem;
     border: none;
 }
 
 .landscape-container {
-    margin-right: 1rem;
-    margin-left: 3rem;
+    /* margin-right: 1rem; */
+    /* margin-left: 3rem; */
     margin-top: 4rem;
-    width: 60%;   
+    width: 100%;   
 }
 
 .material-icons {
