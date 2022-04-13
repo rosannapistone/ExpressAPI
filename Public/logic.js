@@ -74,7 +74,7 @@ function showLandscapes(landscapes) {
   landscapeContainer.appendChild(landscapeHolder);
 
   for (let landscape of landscapes) {
-    landscapeHolder.style.display = "initial";
+    //landscapeHolder.style.display = "initial";
     const landscapeContent = document.createElement("div");
     landscapeContent.setAttribute("id", "landscape-content");
     landscapeHolder.appendChild(landscapeContent);
@@ -132,24 +132,34 @@ function getSpecLandscape (landscapes) {
     const animal = inputAnimal.value;
 
     landscapes.map(landscape => {
-      if (landscape.name === name || landscape.flower === flower || landscape.animal === animal){
+      if (landscape.name === name || landscape.flower === flower || landscape.animal === animal)
+      {
+        const resultDiv = document.createElement('div')
+        searchResult.appendChild(resultDiv)
+        resultDiv.setAttribute("id", "result-div");
+        const result = document.createElement('p')
+        resultDiv.appendChild(result)
+        result.innerHTML = 'Sökresultat:'
+        result.style.color = "blue"
         const namn = document.createElement('p')
-        searchResult.appendChild(namn)
+        resultDiv.appendChild(namn)
         namn.innerHTML = landscape.name
         const blomma = document.createElement('p')
-        searchResult.appendChild(blomma)
+        resultDiv.appendChild(blomma)
         blomma.innerHTML = landscape.flower
         const djur = document.createElement('p')
-        searchResult.appendChild(djur)
+        resultDiv.appendChild(djur)
         djur.innerHTML = landscape.animal
-      } else if (landscape.name !== name || landscape.flower !== flower || landscape.animal !== animal){
-        const error = document.createElement('p')
-        searchResult.appendChild(error)
-        error.innerHTML = 'Landskapet finns ej. Varsågod att lägga till det.'
-        console.log('finns ej')
       }
     })
-  });
+   /*  landscapes.map(landscape => {
+    if (landscape.name !== name || landscape.flower !== flower || landscape.animal !== animal){
+      const noResult = document.createElement("p")
+      searchResult.appendChild(noResult)
+      noResult.innerHTML = ('inget')
+    }
+  }); */
+});
 }
 
 //button call the following function

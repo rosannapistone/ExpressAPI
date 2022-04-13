@@ -12,12 +12,12 @@ function renderLandscapes() {
 }
 
 const generateId = () => {
-  let numb = 1;
-  let getRandomID = Math.random() * numb;
-  let takenIds = [1];
+  /* let numb = 1; */
+  let getRandomID = Math.random() * 100;
+  /* let takenIds = [1];
   while (takenIds.includes(getRandomID)) {
     takenIds.push(getRandomID);
-  }
+  } */
   return getRandomID;
 };
 
@@ -53,23 +53,13 @@ app.get("/api/landscapes/:id", (req, res) => {
     const foundLandscape = landscapeList.find((landscape) => {
       console.log('list', landscapeList)
         if (landscape.id === +req.params.id) {
-          console.log('id:', landscape.id, req.params.id)
             return true
         }  else {
+          res.status(404).send("No landscapes found")
             return false
         } 
     })
     res.send(foundLandscape)
-
-/*   const id = req.params.id;
-
-let lookForLandscape = renderLandscapes().find((landscape) => landscape.id === id)
-console.log('hejhej:',lookForLandscape)
-  if (!isLandscapeAdded(id)) {
-    res.send("Landskapet finns ej");
-  }
-  
-  res.status(200).send(isLandscapeAdded(id)); */
 });
 
 
@@ -80,13 +70,13 @@ app.post("/api/landscapes", (req, res) => {
   const newLandscapeId = { ...newLandscape, id: generateId() };
   landscapeList.push(newLandscapeId);
   saveLandscapes(landscapeList);
-  res.send("uppdated");
+  res.send("New landscape is posted");
 });
 
 app.put("/api/landscapes/:id", (req, res) => {
   const { id } = req.params;
   if (!isLandscapeAdded(id)) {
-    res.send("Landskapet finns ej");
+    res.status(404).send("No landscape matches this call");
     return;
   }
   let updatedLandscapeList = renderLandscapes().map((item) => {
@@ -96,19 +86,19 @@ app.put("/api/landscapes/:id", (req, res) => {
     return item;
   });
   saveLandscapes(updatedLandscapeList);
-  res.status(200).send(`landscapes id: updated`);
+  res.status(200).send(`landscape with id:${id} is updated`);
 });
 
 app.delete("/api/landscapes/:id", (req, res) => {
   const { id } = req.params;
   if (!isLandscapeAdded(id)) {
-    res.send("Landskapet finns ej");
+    res.status(404).send("Landscape does not exist");
   }
   let landscapeList = renderLandscapes();
   let removeLandscape = landscapeList.find((item) => item.id == id);
   let updatedLandscapeList = landscapeList.filter((item) => item.id != id);
   saveLandscapes(updatedLandscapeList);
-  res.send("landskap borttaget");
+  res.send("Landscape deleted");
 });
 
 app.listen(port, () => console.log(`app is running on port: ${port}`));

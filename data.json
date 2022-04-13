@@ -1,14 +1,32 @@
 [
   {
-    "name": "hej",
-    "flower": "hej",
-    "animal": "hej",
+    "name": "Bohuslän",
+    "flower": "Vildkaprifol",
+    "animal": "Knubbsäl",
     "id": 0.20917977975829682
   },
   {
-    "name": "Hund",
+    "name": "Dalarna",
+    "flower": "Ängsklocka",
+    "animal": "Berguv",
+    "id": 0.19870441569004105
+  },
+  {
+    "name": "Hälsingland",
+    "flower": "Lin",
+    "animal": "Lodjur",
+    "id": 0.7848959613195723
+  },
+  {
+    "name": "Närke",
     "flower": "Gullviva",
     "animal": "Hasselmus",
-    "id": 0.19870441569004105
+    "id": 45.18611708011715
+  },
+  {
+    "name": "Öland",
+    "flower": "Ölandssolvända",
+    "animal": "Näktergal",
+    "id": 7.101921968740066
   }
 ]

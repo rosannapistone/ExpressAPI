@@ -10,9 +10,9 @@ POST http://localhost:3000/api/landscapes
 Content-Type: application/json
 
 {
-    "name": "Hund",
+    "name": "Hey",
     "flower": "Gullviva",
-    "animal": "Hasselmus",
+    "animal": "Hasselmus"
 }
 
 ###

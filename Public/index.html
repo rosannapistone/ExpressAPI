@@ -1,86 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
+    <title>Svenska Landskap</title>
+    <link rel="icon" type="image/x-icon" href="Assets/swedenflag.jpg">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
     <script defer src="/logic.js"></script>
     <script defer src="/index.js"></script>
     <script defer src="/routes.js"></script>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="flex main-container">
-        <div id="form" class="form">
-        
-        <h1 id="heading" class="flex">Lägg till landskap</h1>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1 id="heading">Sveriges landskap</h1>
+    <div class="main-container flex">
+      <div id="form" class="form flex">
+        <div id="search-result"></div>
         <form class="flex">
-        <div class="form-container flex column" > 
-            <div class="field flex column">
-                <label for="Name">Namn</label>
-                <input name="name"> 
-            </div>
-            <div class="field flex column">
-                <label for="flower">Landskapsblomma</label>
-                <input name="flower">
-            </div>
-            <div class="field flex column">
-                <label for="animal">Landskapsdjur</label>
-                <input name="animal">
-            </div>
-            <button id="submit-btn" class="submit-btn flex" type="submit">Lägg till</button>
-        </div>
 
-        <div class="form-container flex column" > 
+          <div class="form-container flex column">
             <div class="field flex column">
-                <label for="Name">Namn</label>
-                <input name="name"> 
+              <label for="Name">Namn:</label>
+              <input name="name" />
             </div>
             <div class="field flex column">
-                <label for="flower">Landskapsblomma</label>
-                <input name="flower">
+              <label for="flower">Landskapsblomma:</label>
+              <input name="flower" />
             </div>
             <div class="field flex column">
-                <label for="animal">Landskapsdjur</label>
-                <input name="animal">
+              <label for="animal">Landskapsdjur:</label>
+              <input name="animal" />
             </div>
-            <button id="search-btn" class="submit-btn flex" type="submit">Sök</button>
-            <div id="search-result"></div>
-        </div>
+            <button id="submit-btn" class="submit-btn flex" type="submit">
+              Lägg till
+            </button>
+          </div>
 
-        <div class="form-container flex column" > 
+          <div class="form-container flex column">
             <div class="field flex column">
-                <label for="Name">Namn</label>
-                <input name="name"> 
+              <label for="Name">Namn:</label>
+              <input name="name" />
             </div>
             <div class="field flex column">
-                <label for="flower">Landskapsblomma</label>
-                <input name="flower">
+              <label for="flower">Landskapsblomma:</label>
+              <input name="flower" />
             </div>
             <div class="field flex column">
-                <label for="animal">Landskapsdjur</label>
-                <input name="animal">
+              <label for="animal">Landskapsdjur:</label>
+              <input name="animal" />
             </div>
-            <button id="edit-btn" class="submit-btn flex" type="submit">Ändra</button>
-        </div>
-    </form>
-    </div>
-    <div id="container" class="landscape-container flex column">
+            <button id="search-btn" class="submit-btn flex" type="submit">
+              Sök
+            </button>
+          </div>
+
+          <div class="form-container flex column">
+            <div class="field flex column">
+              <label for="Name">Namn:</label>
+              <input name="name" />
+            </div>
+            <div class="field flex column">
+              <label for="flower">Landskapsblomma:</label>
+              <input name="flower" />
+            </div>
+            <div class="field flex column">
+              <label for="animal">Landskapsdjur:</label>
+              <input name="animal" />
+            </div>
+            <button id="edit-btn" class="submit-btn flex" type="submit">
+              Ändra
+            </button>
+          </div>
+
+        
+        </form>
+      </div>
+
+      
+
+      <div id="container" class="landscape-container flex column">
         <button id="get-btn" class="get-btn flex">Hämta landskap</button>
-        <div class="flex icons"> 
-            <span class="material-icons">
-                place
-                </span>
-            <span class="material-icons">
-                local_florist
-                </span>
-            <span class="material-icons">
-                pets
-                </span>
+        <div class="flex icons">
+          <span class="material-icons"> place </span>
+          <span class="material-icons"> local_florist </span>
+          <span class="material-icons"> pets </span>
         </div>
+      </div>
     </div>
-    </div>
-</body>
+  </body>
 </html>
