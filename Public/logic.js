@@ -118,6 +118,16 @@ function showLandscapes(landscapes) {
 
 function getSpecLandscape (landscapes) {
   const searchResult = document.getElementById('search-result')
+  const noRes = document.createElement('div')
+  searchResult.appendChild(noRes)
+  //searchResult.appendChild(noRes)
+  const noResult = document.createElement("p")
+  const resultDiv = document.createElement('div')
+  const result = document.createElement('p')
+  const namn = document.createElement('p')
+  const blomma = document.createElement('p')
+  const djur = document.createElement('p')
+
 
   const input = document.querySelectorAll("input");
   const inputName = input[3];
@@ -134,32 +144,30 @@ function getSpecLandscape (landscapes) {
     landscapes.map(landscape => {
       if (landscape.name === name || landscape.flower === flower || landscape.animal === animal)
       {
-        const resultDiv = document.createElement('div')
         searchResult.appendChild(resultDiv)
         resultDiv.setAttribute("id", "result-div");
-        const result = document.createElement('p')
+        
         resultDiv.appendChild(result)
         result.innerHTML = 'Sökresultat:'
         result.style.color = "blue"
-        const namn = document.createElement('p')
+        
         resultDiv.appendChild(namn)
         namn.innerHTML = landscape.name
-        const blomma = document.createElement('p')
+        
         resultDiv.appendChild(blomma)
         blomma.innerHTML = landscape.flower
-        const djur = document.createElement('p')
+        
         resultDiv.appendChild(djur)
         djur.innerHTML = landscape.animal
-      }
+      } 
+      else if (landscape.name !== name || landscape.flower !== flower || landscape.animal !== animal) 
+      {
+        console.log('finns ej')
+        noRes.appendChild(noResult)
+        noResult.innerHTML = ('inget')
+        }
     })
-   /*  landscapes.map(landscape => {
-    if (landscape.name !== name || landscape.flower !== flower || landscape.animal !== animal){
-      const noResult = document.createElement("p")
-      searchResult.appendChild(noResult)
-      noResult.innerHTML = ('inget')
-    }
-  }); */
-});
+  });
 }
 
 //button call the following function

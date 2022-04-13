@@ -1,3 +1,15 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+}
+
+p {font-size: .7rem;}
+
+h1{
+    display: flex;
+    justify-content: center;
+}
+
 /* Reusable classes */
 .flex {display: flex;}
 .column {flex-direction: column;}
@@ -10,7 +22,6 @@
     justify-content: center;
 }
 
-
 .form-container {
     margin: 1rem;
     justify-content: center;
@@ -18,10 +29,7 @@
     flex-wrap: wrap;
 }
 
-
-.field {
-    margin-top: .5rem;
-}
+.field {margin-top: .5rem;}
 
 input {
     border: solid black 1.5px;
@@ -42,7 +50,7 @@ label {
     margin-top: 1rem;
     padding: .3rem;
     justify-content: center;
-   border-radius: .5rem;
+    border-radius: .5rem;
     border: none;
 }
 
@@ -55,8 +63,6 @@ label {
 }
 
 .landscape-container {
-    /* margin-right: 1rem; */
-    /* margin-left: 3rem; */
     margin-top: 4rem;
     width: 100%;   
 }
@@ -78,7 +84,7 @@ label {
     margin-bottom: 1rem;
     padding: .3rem;
     justify-content: center;
-   border-radius: .5rem;
+    border-radius: .5rem;
     border: none;
     font-size: .7rem;
 }
@@ -90,18 +96,11 @@ label {
 }
 
 #landscape-content {
-    /* border-radius: .5rem; */
-    /* padding-left: .7rem;
-    padding-right: .4rem; */
     padding: 0;
     width: 18rem;
-    /* margin: .2rem; */
     display: flex;
     justify-content: center;
     border-bottom: solid black 1.5px;
-    /* flex-wrap: wrap; */
-   /*  background-color: rgba(218, 245, 209, 0.658); */
-
 }
 
 #edit-div {
@@ -129,20 +128,6 @@ label {
     background-color: white;
 } 
 
-body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin: 0;
-}
-
-p {
-    font-size: .7rem;
-}
-
-h1{
-    display: flex;
-    justify-content: center;
-}
-
 /* Mediaqueries */
 @media (max-width: 800px) {
     .main-container {
@@ -156,11 +141,8 @@ h1{
     .landscape-container{
         margin-top: 1rem;
     }
-}
-
-@media (max-width: 800px) {
-   form {
-       flex-wrap: wrap;
-       justify-content: center;
-   }
+    form {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 }
