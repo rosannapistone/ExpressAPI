@@ -5,7 +5,7 @@ body {
 
 p {font-size: .7rem;}
 
-h1{
+h1 {
     display: flex;
     justify-content: center;
 }
@@ -63,7 +63,7 @@ label {
 }
 
 .landscape-container {
-    margin-top: 4rem;
+    margin-top: 3rem;
     width: 100%;   
 }
 
@@ -90,7 +90,6 @@ label {
 }
 
 #container {
-    justify-content: center;
     align-items: center;
     width: 100%;
 }
@@ -133,7 +132,6 @@ label {
     .main-container {
         flex-wrap: wrap-reverse;
         justify-content: center;
-        /* align-items: center; */
     }
     #heading {
         text-align: center;

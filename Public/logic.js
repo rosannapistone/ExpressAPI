@@ -2,13 +2,15 @@
 //empty it everytime the getLandscapes() is called
 const landscapeHolder = document.createElement("div");
 
-getSpecificLandscape()
+//Gets all data to be ready for the search function
+getSpecificLandscape();
 
 document.getElementById("get-btn").addEventListener("click", (event) => {
   let landscapes = getLandscapes();
   console.log(landscapes);
 });
 
+//Fetches data, GET
 async function getLandscapes() {
   landscapeHolder.innerHTML = "";
   try {
@@ -21,6 +23,7 @@ async function getLandscapes() {
   }
 }
 
+//Fetches data, GET
 async function getSpecificLandscape() {
   try {
     const response = await fetch("/api/landscapes");
@@ -32,6 +35,7 @@ async function getSpecificLandscape() {
   }
 }
 
+//POST
 async function postNewData(data) {
   const response = await fetch("/api/landscapes", {
     method: "POST",
@@ -45,6 +49,7 @@ async function postNewData(data) {
   }, 1500);
 }
 
+//PUT
 async function editData(data, id) {
   const response = await fetch(`/api/landscapes/${id}`, {
     method: "PUT",
@@ -58,6 +63,7 @@ async function editData(data, id) {
   }, 1500);
 }
 
+//DELETE
 async function deleteData(id) {
   const response = await fetch(`/api/landscapes/${id}`, {
     method: "DELETE",
@@ -74,23 +80,22 @@ function showLandscapes(landscapes) {
   landscapeContainer.appendChild(landscapeHolder);
 
   for (let landscape of landscapes) {
-    //landscapeHolder.style.display = "initial";
     const landscapeContent = document.createElement("div");
     landscapeContent.setAttribute("id", "landscape-content");
     landscapeHolder.appendChild(landscapeContent);
     const name = document.createElement("p");
     name.innerText = landscape.name;
-    name.style.width = "40%";
+    name.style.width = "36%";
     landscapeContent.appendChild(name);
 
     const flower = document.createElement("p");
     flower.innerText = landscape.flower;
-    flower.style.width = "30%";
+    flower.style.width = "32%";
     landscapeContent.appendChild(flower);
 
     const animal = document.createElement("p");
     animal.innerText = landscape.animal;
-    animal.style.width = "30%";
+    animal.style.width = "32%";
     landscapeContent.appendChild(animal);
 
     const editDiv = document.createElement("div");
@@ -115,19 +120,17 @@ function showLandscapes(landscapes) {
   }
 }
 
-
-function getSpecLandscape (landscapes) {
-  const searchResult = document.getElementById('search-result')
-  const noRes = document.createElement('div')
-  searchResult.appendChild(noRes)
-  //searchResult.appendChild(noRes)
-  const noResult = document.createElement("p")
-  const resultDiv = document.createElement('div')
-  const result = document.createElement('p')
-  const namn = document.createElement('p')
-  const blomma = document.createElement('p')
-  const djur = document.createElement('p')
-
+//searches for unique data from the db
+function getSpecLandscape(landscapes) {
+  const searchResult = document.getElementById("search-result");
+  const noRes = document.createElement("div");
+  searchResult.appendChild(noRes);
+  const noResult = document.createElement("p");
+  const resultDiv = document.createElement("div");
+  const result = document.createElement("p");
+  const namn = document.createElement("p");
+  const blomma = document.createElement("p");
+  const djur = document.createElement("p");
 
   const input = document.querySelectorAll("input");
   const inputName = input[3];
@@ -141,36 +144,35 @@ function getSpecLandscape (landscapes) {
     const flower = inputFlower.value;
     const animal = inputAnimal.value;
 
-    landscapes.map(landscape => {
-      if (landscape.name === name || landscape.flower === flower || landscape.animal === animal)
-      {
-        searchResult.appendChild(resultDiv)
+    for (let landscape of landscapes) {
+      if (
+        landscape.name === name ||
+        landscape.flower === flower ||
+        landscape.animal === animal
+      ) {
+        searchResult.appendChild(resultDiv);
         resultDiv.setAttribute("id", "result-div");
-        
-        resultDiv.appendChild(result)
-        result.innerHTML = 'Sökresultat:'
-        result.style.color = "blue"
-        
-        resultDiv.appendChild(namn)
-        namn.innerHTML = landscape.name
-        
-        resultDiv.appendChild(blomma)
-        blomma.innerHTML = landscape.flower
-        
-        resultDiv.appendChild(djur)
-        djur.innerHTML = landscape.animal
-      } 
-      else if (landscape.name !== name || landscape.flower !== flower || landscape.animal !== animal) 
-      {
-        console.log('finns ej')
-        noRes.appendChild(noResult)
-        noResult.innerHTML = ('inget')
-        }
-    })
+
+        resultDiv.appendChild(result);
+        result.innerHTML = "Sökresultat:";
+        result.style.color = "blue";
+
+        resultDiv.appendChild(namn);
+        namn.innerHTML = landscape.name;
+
+        resultDiv.appendChild(blomma);
+        blomma.innerHTML = landscape.flower;
+
+        resultDiv.appendChild(djur);
+        djur.innerHTML = landscape.animal;
+
+        noResult.innerHTML = "";
+      }
+    }
   });
 }
 
-//button call the following function
+//button calls the following function
 document.getElementById("submit-btn").addEventListener("click", (event) => {
   event.preventDefault();
   postLandscape();
@@ -192,7 +194,7 @@ function postLandscape() {
   postNewData(data);
 }
 
-//triggers from button 'click' in the UI, 
+//triggers from button 'click' in the UI,
 //all the changes are sent to the PUT function
 function editLandscape(landscape, landscapes) {
   const input = document.querySelectorAll("input");

@@ -1,23 +1,19 @@
 import express from "express";
-import fs, { readFile, readFileSync, writeFile } from "fs";
+import fs from "fs";
 
 const app = express();
 const port = 3000;
 
-//Functions TA BORT SYNC, DALIGT VIF HAMTNING, HEL FIL MASTE LASAS IN
+
 function renderLandscapes() {
   let data = fs.readFileSync("./data.json");
   let object = JSON.parse(data);
   return object;
 }
 
+//id generator, is called when new data creates
 const generateId = () => {
-  /* let numb = 1; */
   let getRandomID = Math.random() * 100;
-  /* let takenIds = [1];
-  while (takenIds.includes(getRandomID)) {
-    takenIds.push(getRandomID);
-  } */
   return getRandomID;
 };
 
